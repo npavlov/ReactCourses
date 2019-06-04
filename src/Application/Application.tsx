@@ -10,8 +10,14 @@ const Application = () => {
         ];
 
     return (
-        <ToDoList toDo={data} />
+        <div>
+            <ToDoList toDo={data} />
+            <button type="button" className="btn btn-outline-success btn-sm">
+                test
+                <i className="fa fa-area-chart" />
+            </button>
+        </div>
     );
-}
+};
 
 export default Application;

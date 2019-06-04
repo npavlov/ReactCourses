@@ -1,7 +1,6 @@
 import React from "react";
 import { ITodoListItem } from '../Interfaces/IToDoListItem';
 import ToDoListItem from '../ToDoListItem';
-import "../css/bootstrap.css";
 
 interface TodoListProps {
     toDo: ITodoListItem[]

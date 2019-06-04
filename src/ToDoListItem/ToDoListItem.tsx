@@ -1,6 +1,5 @@
 import React from "react";
 import { ITodoListItem } from '../Interfaces/IToDoListItem';
-import "../css/bootstrap.css";
 import "./ToDoListItem.css";
 
 
