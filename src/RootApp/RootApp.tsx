@@ -1,4 +1,6 @@
 import React from "react";
+import './RootApp.css';
+import "bootstrap";
 
 interface RootAppProps {
     label: string;
@@ -11,7 +13,7 @@ const RootApp = ({label, redLabel = false}: RootAppProps) => {
     };
 
     return <div>
-        <h1 style={style}>{label}</h1>
+        <h1 style={style} className="BaldText">{label}</h1>
     </div>;
 };
 
