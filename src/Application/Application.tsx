@@ -10,7 +10,8 @@ const Application = () => {
     const data: IData[] = [
         { id: 1, label: "test1", important: true, done: true },
         { id: 2, label: "test2", important: false, done: true },
-        { id: 3, label: "test2", important: true, done: false }
+        { id: 3, label: "test2", important: true, done: false },
+        { id: 4, label: "clean my ass", important: true, done: false }
         ];
 
     return (
