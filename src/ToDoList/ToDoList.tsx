@@ -5,7 +5,7 @@ import { IData } from "../Interfaces/IData";
 
 interface TodoListProps {
   toDo: IData[];
-  onItemCheckBoxChange(e: any): void;
+  onItemChange(id: number, action: string): void;
 }
 
 export default class ToDoList extends React.Component<
@@ -13,7 +13,7 @@ export default class ToDoList extends React.Component<
   TodoListProps
 > {
   render() {
-    const { toDo, onItemCheckBoxChange } = this.props;
+    const { toDo, onItemChange } = this.props;
 
     const elements = toDo.map(item => {
       const { id, ...itemProps } = item;
@@ -21,7 +21,9 @@ export default class ToDoList extends React.Component<
         <li key={id} className="list-group-item">
           <ToDoListItem
             {...itemProps}
-            onItemCheckBoxChange={() => onItemCheckBoxChange(id)}
+            onItemCheckBoxChange={() => onItemChange(id, "DONE")}
+            onItemDelete={() => onItemChange(id, "DELETE")}
+            onItemImportant={() => onItemChange(id, "IMPORTANT")}
           />
         </li>
       );

@@ -3,7 +3,14 @@ import "./ToDoListItem.css";
 import { ITodoListItem } from "../Interfaces/IToDoListItem";
 
 const ToDoListItem = (props: ITodoListItem) => {
-  const { label, important, done, onItemCheckBoxChange } = props;
+  const {
+    label,
+    important,
+    done,
+    onItemCheckBoxChange,
+    onItemDelete,
+    onItemImportant
+  } = props;
 
   const className = done ? "done" : "";
 
@@ -15,11 +22,17 @@ const ToDoListItem = (props: ITodoListItem) => {
     <div style={style} className={className}>
       <input type="checkbox" checked={done} onChange={onItemCheckBoxChange} />
       {label}
-      <button className="btn btn-outline-success btn-sm float-right">
+      <button
+        className="btn btn-outline-danger btn-sm float-right"
+        onClick={onItemDelete}
+      >
         <i className="fa fa-trash" />
       </button>
-      <button className="btn btn-outline-danger btn-sm float-right">
-        <i className="fa fa-area-chart" />
+      <button
+        className="btn btn-outline-success btn-sm float-right"
+        onClick={onItemImportant}
+      >
+        <i className="fa fa-exclamation-triangle" />
       </button>
     </div>
   );

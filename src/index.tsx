@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Application from "./Application";
+import App from "./App";
 import { IData } from "./Interfaces/IData";
 
 const data: IData[] = [
@@ -11,7 +11,7 @@ const data: IData[] = [
   { id: 4, label: "clean my ass", important: true, done: false }
 ];
 
-ReactDOM.render(<Application TODOs={data} />, document.getElementById("root"));
+ReactDOM.render(<App toDo={data} />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
