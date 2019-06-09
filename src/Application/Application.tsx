@@ -1,24 +1,40 @@
 import React from "react";
 import ToDoList from "../ToDoList";
-import {IData} from "../Interfaces/IData";
+import { IData } from "../Interfaces/IData";
 
-const Application = () => {
-    function HandleCheckBoxChange(e: Event) {
-        console.log(e.target);
-    }
+export default class Application extends React.Component<
+  { TODOs: IData[] },
+  { TODOs: IData[] }
+> {
+  constructor(props: any) {
+    super(props);
+    this.state = { ...props };
+  }
 
-    const data: IData[] = [
-        { id: 1, label: "test1", important: true, done: true },
-        { id: 2, label: "test2", important: false, done: true },
-        { id: 3, label: "test2", important: true, done: false },
-        { id: 4, label: "clean my ass", important: true, done: false }
-        ];
+  HandleDoneClick = (id: number) => {
+    this.setState(({ TODOs }) => {
+      const idx = TODOs.findIndex(x => x.id === id);
+      const oldItem = TODOs[idx];
+      const newItem = { ...oldItem, done: !oldItem.done };
 
+      const newArr = [...TODOs.slice(0, idx), newItem, ...TODOs.slice(idx + 1)];
+
+      console.log(newItem);
+
+      return {
+        TODOs: newArr
+      };
+    });
+  };
+
+  render() {
     return (
-        <div>
-            <ToDoList toDo={data} onItemCheckBoxChange={HandleCheckBoxChange} />
-        </div>
+      <div>
+        <ToDoList
+          toDo={this.state.TODOs}
+          onItemCheckBoxChange={this.HandleDoneClick}
+        />
+      </div>
     );
-};
-
-export default Application;
+  }
+}
