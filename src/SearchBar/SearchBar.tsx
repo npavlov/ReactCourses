@@ -8,7 +8,6 @@ const SearchBar = (props: {
   done: boolean;
   active: boolean;
   pattern: string;
-  onStringChanged(s: string): void;
 }) => {
   const {
     done,

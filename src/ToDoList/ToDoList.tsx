@@ -21,9 +21,9 @@ export default class ToDoList extends React.Component<
         <li key={id} className="list-group-item">
           <ToDoListItem
             {...itemProps}
-            onItemCheckBoxChange={() => onItemChange(id, "DONE")}
-            onItemDelete={() => onItemChange(id, "DELETE")}
-            onItemImportant={() => onItemChange(id, "IMPORTANT")}
+            onItemCheckBoxChange={() => onItemChange(id, "done")}
+            onItemDelete={() => onItemChange(id, "delete")}
+            onItemImportant={() => onItemChange(id, "important")}
           />
         </li>
       );

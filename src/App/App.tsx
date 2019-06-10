@@ -3,6 +3,7 @@ import ToDoList from "../ToDoList";
 import { IData } from "../Interfaces/IData";
 import Header from "../Header";
 import SearchBar from "../SearchBar";
+import AddItem from "../AddItem";
 
 export default class App extends React.Component<
   { toDo: IData[] },
@@ -13,7 +14,7 @@ export default class App extends React.Component<
     this.state = { ...props, pattern: "", showActive: false, showDone: false };
   }
 
-  HandleClick = (id: number, action: string) => {
+  HandleClick = (id: number, propName: string) => {
     this.setState(({ toDo }) => {
       const idx = toDo.findIndex(x => x.id === id);
 
@@ -21,21 +22,30 @@ export default class App extends React.Component<
 
       const newItem = {
         ...oldItem,
-        important:
-          action === "IMPORTANT" ? !oldItem.important : oldItem.important,
-        done: action === "DONE" ? !oldItem.done : oldItem.done
+        [propName]: !oldItem[propName]
       };
 
-      const deleteArr: IData[] = action === "DELETE" ? [] : [newItem];
-
-      const newArr = [
-        ...toDo.slice(0, idx),
-        ...deleteArr,
-        ...toDo.slice(idx + 1)
-      ];
+      const deleteArr: IData[] = propName === "delete" ? [] : [newItem];
 
       return {
-        toDo: newArr
+        toDo: [...toDo.slice(0, idx), ...deleteArr, ...toDo.slice(idx + 1)]
+      };
+    });
+  };
+
+  AddItem = (label: string) => {
+    this.setState(({ toDo }) => {
+      const id = Math.max.apply(Math, toDo.map(x => x.id)) + 1;
+
+      const newItem: IData = {
+        id: id,
+        label: label,
+        important: false,
+        done: false
+      };
+
+      return {
+        toDo: [...toDo, newItem]
       };
     });
   };
@@ -93,6 +103,7 @@ export default class App extends React.Component<
         />
         <Header {...this.state} />
         <ToDoList toDo={toDoFiltered} onItemChange={this.HandleClick} />
+        <AddItem AddItem={this.AddItem} />
       </div>
     );
   }
