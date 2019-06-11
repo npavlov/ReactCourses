@@ -18,11 +18,9 @@ const SearchBar = (props: {
     onActiveChanged
   } = props;
 
-  const doneButtonStyle = done ? "btn btn-primary" : "btn btn-outline-primary";
+  const doneButtonStyle = done ? "btn btn-info" : "btn btn-outline-info";
 
-  const activeButtonStyle = active
-    ? "btn btn-primary"
-    : "btn btn-outline-primary";
+  const activeButtonStyle = active ? "btn btn-info" : "btn btn-outline-info";
 
   return (
     <div className="SearchBar">

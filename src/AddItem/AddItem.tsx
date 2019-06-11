@@ -46,7 +46,7 @@ export default class AddItem extends React.Component<
               onChange={this.onTextChange}
             />
             <div className="input-group-append">
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-info" type="submit">
                 Add
               </button>
             </div>

@@ -15,7 +15,7 @@ const ToDoListItem = (props: ITodoListItem) => {
   const className = done ? "done" : "";
 
   const style: React.CSSProperties = {
-    fontWeight: important ? "bold" : "normal"
+    fontWeight: important ? 600 : 100
   };
 
   return (
