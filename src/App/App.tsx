@@ -9,16 +9,13 @@ export default class App extends React.Component<
   { toDo: IData[] },
   { toDo: IData[]; showDone: boolean; showActive: boolean; pattern: string }
 > {
-  constructor(props: any) {
-    super(props);
-    this.state = { ...props, pattern: "", showActive: false, showDone: false };
-  }
+  state = { ...this.props, pattern: "", showActive: false, showDone: false };
 
   HandleClick = (id: number, propName: string) => {
     this.setState(({ toDo }) => {
       const idx = toDo.findIndex(x => x.id === id);
 
-      const oldItem = toDo[idx];
+      const oldItem: any = toDo[idx];
 
       const newItem = {
         ...oldItem,
